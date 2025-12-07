@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>The Boo-riculum – November Week 4</title>
-<meta name="theme-color" content="#ffffff">
+<title>The Boo-riculum – December Week 2</title>
+<meta name="theme-color" content="#b91c1c">
 <link rel="icon" type="image/png" href="booha-ghost.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
@@ -14,49 +14,159 @@
 html,body{
   height:100%;
   font-family:system-ui,Segoe UI,Roboto,Inter,sans-serif;
-  background:#fff;
+  /* cozy dark winter background */
+  background:radial-gradient(circle at top,#1f2937 0,#020617 55%,#000 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  color:#111;
+  color:#f9fafb;
   padding-bottom:70px; /* pushes buttons up */
 }
-header{text-align:center;margin-top:30px;margin-bottom:20px;}
-header h1{font-family:'Cinzel',serif;font-size:clamp(26px,4.5vw,50px);margin-bottom:10px;font-weight:900;}
-header h2{font-size:clamp(22px,3.5vw,36px);margin-bottom:6px;font-weight:800;}
-header h3{font-size:clamp(18px,3vw,30px);font-weight:600;color:#444;}
 
-.card-outer{width:min(92vw,900px);aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;}
+/* ---------- HEADER ---------- */
+header{
+  text-align:center;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+header h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(26px,4.5vw,50px);
+  margin-bottom:10px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#fee2e2; /* soft pink */
+  text-shadow:0 0 10px rgba(248,250,252,.7);
+}
+header h2{
+  font-size:clamp(22px,3.5vw,36px);
+  margin-bottom:6px;
+  font-weight:800;
+  color:#fde68a; /* warm gold */
+  text-shadow:0 0 8px rgba(234,179,8,.6);
+}
+header h3{
+  font-size:clamp(18px,3vw,30px);
+  font-weight:600;
+  color:#bfdbfe; /* icy blue */
+}
+
+/* ---------- CARD ---------- */
+.card-outer{
+  width:min(92vw,900px);
+  aspect-ratio:3/2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .card{
-  width:100%;height:100%;border-radius:var(--radius);
-  border:3px solid rgba(0,0,0,.15);
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  width:100%;
+  height:100%;
+  border-radius:var(--radius);
+  border:3px solid rgba(248,250,252,.3);
+  box-shadow:0 18px 40px rgba(15,23,42,.85);
   overflow:hidden;
-  background:#f0f0f0;
-  display:flex;align-items:center;justify-content:center;
+  background:#fefce8; /* light by default, overwritten by JS colors */
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
+  color:#111; /* text inside card stays dark */
 }
 .face{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  border-radius:var(--radius);transition:opacity .4s ease,transform .4s ease;
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-radius:var(--radius);
+  transition:opacity .4s ease,transform .4s ease;
+  padding:1.2rem;
 }
 .face.hidden{opacity:0;transform:scale(0.98);}
 .face.visible{opacity:1;transform:scale(1);}
-.term h2{margin:0;font-size:clamp(40px,8vw,90px);font-weight:900;line-height:1.1;}
-.term p{margin-top:.7rem;font-size:clamp(26px,4vw,42px);font-weight:700;}
-.term small{margin-top:.3rem;font-size:clamp(20px,3vw,30px);font-weight:600;color:#333;}
-
-.actions{display:flex;gap:20px;justify-content:center;margin-top:25px;margin-bottom:20px;flex-wrap:wrap;}
-button.btn{
-  padding:1rem 1.3rem;border-radius:16px;border:none;background:#f3f3f3;
-  box-shadow:0 6px 15px rgba(0,0,0,.1);font-weight:800;cursor:pointer;font-size:1.1rem;
+.term h2{
+  margin:0;
+  font-size:clamp(40px,8vw,90px);
+  font-weight:900;
+  line-height:1.1;
 }
-.modes{display:flex;gap:10px;justify-content:center;margin-bottom:20px;margin-top:10px;flex-wrap:wrap;}
-.modes button{padding:.6rem 1rem;border:none;border-radius:10px;cursor:pointer;font-weight:700;background:#eee;}
-.modes button.active{background:#111;color:#fff;}
+.term p{
+  margin-top:.7rem;
+  font-size:clamp(26px,4vw,42px);
+  font-weight:700;
+}
+.term small{
+  margin-top:.3rem;
+  font-size:clamp(20px,3vw,30px);
+  font-weight:600;
+  color:#333;
+}
 
+/* ---------- MODE BUTTONS ---------- */
+.modes{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:20px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+.modes button{
+  padding:.6rem 1rem;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:700;
+  background:rgba(15,23,42,.8);
+  color:#e5e7eb;
+  box-shadow:0 6px 16px rgba(15,23,42,.7);
+  border:1px solid rgba(248,250,252,.2);
+}
+.modes button.active{
+  background:linear-gradient(135deg,#ef4444,#22c55e);
+  color:#fff;
+  box-shadow:0 0 16px rgba(248,250,252,.8);
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.actions{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-top:25px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+button.btn{
+  padding:1rem 1.3rem;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#fecaca,#bbf7d0);
+  box-shadow:0 10px 25px rgba(15,23,42,.7);
+  font-weight:800;
+  cursor:pointer;
+  font-size:1.05rem;
+  color:#111827;
+  letter-spacing:.03em;
+}
+button.btn:active{
+  transform:translateY(2px);
+  box-shadow:0 5px 16px rgba(15,23,42,.8);
+}
+
+/* ---------- FOOTER ---------- */
 footer{
-  position:fixed;bottom:18px;left:0;width:100%;
-  text-align:center;color:#444;font-family:'Cinzel',serif;
-  font-size:clamp(14px,2vw,18px);letter-spacing:1px;opacity:.9;
+  position:fixed;
+  bottom:18px;
+  left:0;
+  width:100%;
+  text-align:center;
+  color:#e5e7eb;
+  font-family:'Cinzel',serif;
+  font-size:clamp(14px,2vw,18px);
+  letter-spacing:1px;
+  opacity:.9;
 }
 </style>
 </head>
@@ -64,8 +174,8 @@ footer{
 
 <header>
   <h1>The Boo-riculum</h1>
-  <h2>November Week 4</h2>
-  <h3>11月第4週</h3>
+  <h2>December Week 2</h2>
+  <h3>12月第2週</h3>
 </header>
 
 <div class="modes">
@@ -80,7 +190,10 @@ footer{
       <div class="term"><h2 id="frontTitle"></h2></div>
     </div>
     <div class="face hidden" id="backFace">
-      <div class="term"><h2 id="backTitle"></h2><p id="backKana"></p></div>
+      <div class="term">
+        <h2 id="backTitle"></h2>
+        <p id="backKana"></p>
+      </div>
     </div>
   </div>
 </div>
@@ -94,50 +207,142 @@ footer{
 <footer>Bryan's English School</footer>
 
 <script>
-const COLORS=["#ffd166","#a6f7b2","#7dd3fc","#cdb4db","#fbc4ab","#b9fbc0","#fde68a","#f8c8dc","#a5f3fc","#fcd5ce"];
+/* Soft, light Christmas colors for the card backgrounds */
+const COLORS=[
+  "#ffe5ec", // frosty pink
+  "#fef3c7", // warm gold
+  "#dcfce7", // mint green
+  "#e0f2fe", // icy blue
+  "#fde68a", // soft yellow
+  "#f9a8d4", // candy pink
+  "#bbf7d0", // light green
+  "#fecaca", // light red
+  "#fef9c3", // cream
+  "#bae6fd"  // pale blue
+];
 
-/* -------------------- WEEK 4 VOCAB (12) -------------------- */
+/* -------------------- DECEMBER WEEK 2 VOCAB (10) -------------------- */
+/* fireplace, blanket, mittens, snowflake, gift bag, surprise,
+   celebrate, family dinner, vacation plan, year-end party */
 const CARDS=[
-  {en:"cozy",jp:"居心地のよい",kana:"いごこちのよい"},
-  {en:"spacious",jp:"広々とした",kana:"ひろびろとした"},
-  {en:"modern",jp:"現代的な",kana:"げんだいてきな"},
-  {en:"messy",jp:"散らかった",kana:"ちらかった"},
-  {en:"clean",jp:"きれいな",kana:"きれいな"},
-  {en:"bright",jp:"明るい",kana:"あかるい"},
-  {en:"quiet",jp:"静かな",kana:"しずかな"},
-  {en:"pool",jp:"プール",kana:"ぷーる"},
-  {en:"big kitchen",jp:"大きなキッチン",kana:"おおきなきっちん"},
-  {en:"library",jp:"図書館",kana:"としょかん"},
-  {en:"garden",jp:"庭",kana:"にわ"},
-  {en:"mountain view",jp:"山の見える景色",kana:"やまのみえるけしき"},
+  {en:"fireplace",   jp:"暖炉",         kana:"だんろ"},
+  {en:"blanket",     jp:"毛布",         kana:"もうふ"},
+  {en:"mittens",     jp:"手ぶくろ",     kana:"てぶくろ"},
+  {en:"snowflake",   jp:"雪の結晶",     kana:"ゆき の けっしょう"},
+  {en:"gift bag",    jp:"ギフトバッグ", kana:"ぎふとばっぐ"},
+  {en:"surprise",    jp:"サプライズ",   kana:"さぷらいず"},
+  {en:"celebrate",   jp:"祝う",         kana:"いわう"},
+  {en:"family dinner", jp:"家族の夕食",   kana:"かぞく の ゆうしょく"},
+  {en:"vacation plan", jp:"旅行計画",     kana:"りょこうけいかく"},
+  {en:"year-end party", jp:"忘年会",      kana:"ぼうねんかい"}
 ];
 
-/* -------------------- WEEK 4 SENTENCES (10) -------------------- */
+/* -------------------- DECEMBER WEEK 2 SENTENCES (10) -------------------- */
 const SENTENCES=[
-  {en:"There is a cozy sofa in the living room.",jp:"リビングルームには居心地の良いソファがあります。",kana:"りびんぐるーむ には いごこちのよい そふぁ が あります"},
-  {en:"There is a spacious bedroom upstairs.",jp:"2階には広々とした寝室があります。",kana:"にかい には ひろびろとした しんしつ が あります"},
-  {en:"There is a modern kitchen in the house.",jp:"家には現代的なキッチンがあります。",kana:"いえ には げんだいてきな きっちん が あります"},
-  {en:"There is a messy desk in my room.",jp:"私の部屋には散らかった机があります。",kana:"わたし の へや には ちらかった つくえ が あります"},
-  {en:"There is a clean bathroom next to the kitchen.",jp:"キッチンの隣にはきれいなバスルームがあります。",kana:"きっちん の となり には きれいな ばするーむ が あります"},
-  {en:"There is a bright window in the dining room.",jp:"ダイニングルームには明るい窓があります。",kana:"だいにんぐるーむ には あかるい まど が あります"},
-  {en:"There is a quiet study area in the library.",jp:"図書館には静かな勉強スペースがあります。",kana:"としょかん には しずかな べんきょう すぺーす が あります"},
-  {en:"There is a big pool in the backyard.",jp:"裏庭には大きなプールがあります。",kana:"うらにわ には おおきな ぷーる が あります"},
-  {en:"There is a big kitchen with a long table.",jp:"長いテーブルのある大きなキッチンがあります。",kana:"ながい てーぶる の ある おおきな きっちん が あります"},
-  {en:"There is a library with many books.",jp:"たくさんの本がある図書館があります。",kana:"たくさん の ほん が ある としょかん が あります"},
+  {
+    en:"There is a warm fireplace in the living room.",
+    jp:"リビングルームにはあたたかい暖炉があります。",
+    kana:"りびんぐるーむ には あたたかい だんろ が あります"
+  },
+  {
+    en:"On cold December nights, I sleep with a blanket.",
+    jp:"さむい12月のよる、私は毛布をかけてねます。",
+    kana:"さむい じゅうにがつ の よる わたし は もうふ を かけて ねます"
+  },
+  {
+    en:"I wear mittens when I play in the snow.",
+    jp:"ゆきであそぶとき、私はミトンをつけます。",
+    kana:"ゆき で あそぶ とき わたし は みとん を つけます"
+  },
+  {
+    en:"A snowflake falls softly from the sky.",
+    jp:"雪の結晶がそらからやさしくおちてきます。",
+    kana:"ゆき の けっしょう が そら から やさしく おちて きます"
+  },
+  {
+    en:"I put the present in a gift bag.",
+    jp:"プレゼントをギフトバッグにいれます。",
+    kana:"ぷれぜんと を ぎふとばっぐ に いれます"
+  },
+  {
+    en:"The surprise party is on December 24th.",
+    jp:"サプライズパーティーは12月24日にあります。",
+    kana:"さぷらいず ぱーてぃー は じゅうにがつ にじゅうよっか に あります"
+  },
+  {
+    en:"We celebrate the holiday with music and lights.",
+    jp:"私たちはおんがくとライトでホリデーをいわいます。",
+    kana:"わたしたち は おんがく と らいと で ほりでー を いわいます"
+  },
+  {
+    en:"Our family dinner is on a Sunday evening in December.",
+    jp:"12月のにちようびのよるに、私たちの家族の夕食があります。",
+    kana:"じゅうにがつ の にちようび の よる に わたしたち の かぞく の ゆうしょく が あります"
+  },
+  {
+    en:"We talk about our vacation plan for winter break.",
+    jp:"私たちはウィンターブレイクの旅行計画についてはなします。",
+    kana:"わたしたち は うぃんたーぶれいく の りょこうけいかく について はなします"
+  },
+  {
+    en:"There is a year-end party at my father's office.",
+    jp:"父の会社で忘年会があります。",
+    kana:"ちち の かいしゃ で ぼうねんかい が あります"
+  }
 ];
 
-/* -------------------- WEEK 4 QUESTIONS (10) -------------------- */
+/* -------------------- DECEMBER QUESTIONS (10, UNRELATED BUT XMAS/DEC THEME) -------------------- */
 const QUESTIONS=[
-  {en:"Is there a cozy sofa in the living room?",jp:"リビングルームに居心地の良いソファはありますか？",kana:"りびんぐるーむ に いごこちのよい そふぁ は ありますか"},
-  {en:"Is there a spacious bedroom upstairs?",jp:"2階に広々とした寝室はありますか？",kana:"にかい に ひろびろとした しんしつ は ありますか"},
-  {en:"Is there a modern kitchen in the house?",jp:"家に現代的なキッチンはありますか？",kana:"いえ に げんだいてきな きっちん は ありますか"},
-  {en:"Is there a messy desk in your room?",jp:"あなたの部屋に散らかった机はありますか？",kana:"あなた の へや に ちらかった つくえ は ありますか"},
-  {en:"Is there a clean bathroom next to the kitchen?",jp:"キッチンの隣にきれいなバスルームはありますか？",kana:"きっちん の となり に きれいな ばするーむ は ありますか"},
-  {en:"Is there a bright window in the dining room?",jp:"ダイニングルームに明るい窓はありますか？",kana:"だいにんぐるーむ に あかるい まど は ありますか"},
-  {en:"Is there a quiet study area in the library?",jp:"図書館に静かな勉強スペースはありますか？",kana:"としょかん に しずかな べんきょう すぺーす は ありますか"},
-  {en:"Is there a big pool in the backyard?",jp:"裏庭に大きなプールはありますか？",kana:"うらにわ に おおきな ぷーる は ありますか"},
-  {en:"Is there a big kitchen with a long table?",jp:"長いテーブルのある大きなキッチンはありますか？",kana:"ながい てーぶる の ある おおきな きっちん は ありますか"},
-  {en:"Is there a library with many books?",jp:"たくさんの本がある図書館はありますか？",kana:"たくさん の ほん が ある としょかん は ありますか"},
+  {
+    en:"Do you like December?",
+    jp:"あなたは12月がすきですか？",
+    kana:"あなた は じゅうにがつ が すき です か"
+  },
+  {
+    en:"What do you want for Christmas?",
+    jp:"クリスマスに何がほしいですか？",
+    kana:"くりすます に なに が ほしい です か"
+  },
+  {
+    en:"Do you make a snowman in winter?",
+    jp:"冬にゆきだるまをつくりますか？",
+    kana:"ふゆ に ゆきだるま を つくります か"
+  },
+  {
+    en:"What color is your Christmas tree?",
+    jp:"あなたのクリスマスツリーは何色ですか？",
+    kana:"あなた の くりすますつりー は なにいろ です か"
+  },
+  {
+    en:"Do you eat cake on Christmas?",
+    jp:"クリスマスにケーキをたべますか？",
+    kana:"くりすます に けーき を たべます か"
+  },
+  {
+    en:"Who do you spend Christmas with?",
+    jp:"クリスマスをだれとすごしますか？",
+    kana:"くりすます を だれ と すごします か"
+  },
+  {
+    en:"Do you like winter break from school?",
+    jp:"学校のウィンターブレイクはすきですか？",
+    kana:"がっこう の うぃんたーぶれいく は すき です か"
+  },
+  {
+    en:"What do you do on New Year's Eve?",
+    jp:"おおみそかに何をしますか？",
+    kana:"おおみそか に なに を します か"
+  },
+  {
+    en:"Do you watch Christmas movies?",
+    jp:"クリスマスのえいがを見ますか？",
+    kana:"くりすます の えいが を みます か"
+  },
+  {
+    en:"Do you send cards to your friends in December?",
+    jp:"12月に友だちにカードをおくりますか？",
+    kana:"じゅうにがつ に ともだち に かーど を おくります か"
+  }
 ];
 
 let data=CARDS,i=0,showBack=false;
@@ -163,16 +368,30 @@ function show(){
   }
 }
 
-document.getElementById('flipBtn').onclick=()=>{showBack=!showBack;show();};
-document.getElementById('nextBtn').onclick=()=>{i=(i+1)%data.length;showBack=false;show();};
-document.getElementById('prevBtn').onclick=()=>{i=(i-1+data.length)%data.length;showBack=false;show();};
+document.getElementById('flipBtn').onclick=()=>{
+  showBack=!showBack;
+  show();
+};
+document.getElementById('nextBtn').onclick=()=>{
+  i=(i+1)%data.length;
+  showBack=false;
+  show();
+};
+document.getElementById('prevBtn').onclick=()=>{
+  i=(i-1+data.length)%data.length;
+  showBack=false;
+  show();
+};
 
 document.getElementById('modeVocab').onclick=()=>{setMode(CARDS,'modeVocab');};
 document.getElementById('modeSent').onclick=()=>{setMode(SENTENCES,'modeSent');};
 document.getElementById('modeQues').onclick=()=>{setMode(QUESTIONS,'modeQues');};
 
 function setMode(arr,btnId){
-  data=arr;i=0;showBack=false;show();
+  data=arr;
+  i=0;
+  showBack=false;
+  show();
   document.querySelectorAll('.modes button').forEach(b=>b.classList.remove('active'));
   document.getElementById(btnId).classList.add('active');
 }
